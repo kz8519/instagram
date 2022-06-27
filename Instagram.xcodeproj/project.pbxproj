@@ -20,6 +20,8 @@
 		EEA661E8286A420100D1CADB /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA661E7286A420100D1CADB /* InstagramTests.m */; };
 		EEA661F2286A420100D1CADB /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA661F1286A420100D1CADB /* InstagramUITests.m */; };
 		EEA661F4286A420100D1CADB /* InstagramUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA661F3286A420100D1CADB /* InstagramUITestsLaunchTests.m */; };
+		EEA66204286A4ADB00D1CADB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA66203286A4ADB00D1CADB /* LoginViewController.m */; };
+		EEA66207286A4F8300D1CADB /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA66206286A4F8300D1CADB /* FeedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,10 @@
 		EEA661ED286A420100D1CADB /* InstagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA661F1286A420100D1CADB /* InstagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITests.m; sourceTree = "<group>"; };
 		EEA661F3286A420100D1CADB /* InstagramUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITestsLaunchTests.m; sourceTree = "<group>"; };
+		EEA66202286A4ADB00D1CADB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		EEA66203286A4ADB00D1CADB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EEA66205286A4F8300D1CADB /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		EEA66206286A4F8300D1CADB /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		F1F53F2000EAE47FD24F74C6 /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +112,6 @@
 				9D9CCAB0F8490F7CC0322A19 /* Pods-InstagramTests.debug.xcconfig */,
 				A27950509F4F989EF3659DFD /* Pods-InstagramTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -145,6 +150,7 @@
 		EEA661CA286A420000D1CADB /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				EEA66201286A4ABE00D1CADB /* View Controllers */,
 				EEA661CB286A420000D1CADB /* AppDelegate.h */,
 				EEA661CC286A420000D1CADB /* AppDelegate.m */,
 				EEA661CE286A420000D1CADB /* SceneDelegate.h */,
@@ -175,6 +181,17 @@
 				EEA661F3286A420100D1CADB /* InstagramUITestsLaunchTests.m */,
 			);
 			path = InstagramUITests;
+			sourceTree = "<group>";
+		};
+		EEA66201286A4ABE00D1CADB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEA66202286A4ADB00D1CADB /* LoginViewController.h */,
+				EEA66203286A4ADB00D1CADB /* LoginViewController.m */,
+				EEA66205286A4F8300D1CADB /* FeedViewController.h */,
+				EEA66206286A4F8300D1CADB /* FeedViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +436,8 @@
 				EEA661CD286A420000D1CADB /* AppDelegate.m in Sources */,
 				EEA661DE286A420100D1CADB /* main.m in Sources */,
 				EEA661D0286A420000D1CADB /* SceneDelegate.m in Sources */,
+				EEA66207286A4F8300D1CADB /* FeedViewController.m in Sources */,
+				EEA66204286A4ADB00D1CADB /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
