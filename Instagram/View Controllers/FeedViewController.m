@@ -7,6 +7,8 @@
 
 #import "FeedViewController.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 
 @interface FeedViewController ()
@@ -38,8 +40,11 @@
         if (error != nil) {
             NSLog(@"User log out failed: %@", error.localizedDescription);
         } else {
-            [self dismissViewControllerAnimated:true completion:nil];
             NSLog(@"User logged out successfully");
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            self.view.window.rootViewController = loginViewController;
         }
         
     }];
