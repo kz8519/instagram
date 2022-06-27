@@ -6,8 +6,11 @@
 //
 
 #import "FeedViewController.h"
+#import <Parse/Parse.h>
+
 
 @interface FeedViewController ()
+- (IBAction)logoutUser:(id)sender;
 
 @end
 
@@ -28,4 +31,17 @@
 }
 */
 
+- (IBAction)logoutUser:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+        
+        if (error != nil) {
+            NSLog(@"User log out failed: %@", error.localizedDescription);
+        } else {
+            [self dismissViewControllerAnimated:true completion:nil];
+            NSLog(@"User logged out successfully");
+        }
+        
+    }];
+}
 @end
