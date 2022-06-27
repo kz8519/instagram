@@ -87,9 +87,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="3ER-eK-2Se">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="IaW-sJ-14b">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tfw-Rf-epC">
+                                <rect key="frame" x="20" y="11" width="97.5" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Compose"/>
+                                <connections>
+                                    <segue destination="rBu-1v-6YX" kind="presentation" id="ALP-OO-jZh"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="biI-Ue-HfL">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dKq-qs-qDX">
-                                <rect key="frame" x="302" y="12.5" width="92" height="31"/>
+                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
@@ -103,6 +114,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lb7-oK-LG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1871.0144927536232" y="93.75"/>
+        </scene>
+        <!--Create Post-->
+        <scene sceneID="ZqA-r4-6iw">
+            <objects>
+                <viewController id="HRB-3t-5cz" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="647-vJ-K6k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pA-9Y-Qvt">
+                                <rect key="frame" x="117" y="169" width="178" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Use Camera"/>
+                                <connections>
+                                    <action selector="useCamera:" destination="HRB-3t-5cz" eventType="touchUpInside" id="chB-BE-uAj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VK-zf-eY0">
+                                <rect key="frame" x="118" y="330" width="178" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Use Photo Roll"/>
+                                <connections>
+                                    <action selector="usePhotos:" destination="HRB-3t-5cz" eventType="touchUpInside" id="bID-mz-BS6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qvl-gx-JQ1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Post" id="kJi-vE-yWN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMR-0x-5qJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2781.1594202898555" y="892.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rkq-kK-u0N">
@@ -121,6 +168,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZO-am-VCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960.86956521739137" y="93.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mrU-r3-CIr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rBu-1v-6YX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="vF9-3a-cKD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XXn-et-YKT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HRB-3t-5cz" kind="relationship" relationship="rootViewController" id="k7Y-sL-WIx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSA-hE-UrX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869.5652173913045" y="892.63392857142856"/>
         </scene>
     </scenes>
     <resources>

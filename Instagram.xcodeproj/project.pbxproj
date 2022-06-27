@@ -22,6 +22,7 @@
 		EEA661F4286A420100D1CADB /* InstagramUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA661F3286A420100D1CADB /* InstagramUITestsLaunchTests.m */; };
 		EEA66204286A4ADB00D1CADB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA66203286A4ADB00D1CADB /* LoginViewController.m */; };
 		EEA66207286A4F8300D1CADB /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA66206286A4F8300D1CADB /* FeedViewController.m */; };
+		EECCE874286A6270000D2054 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE873286A6270000D2054 /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		EEA66203286A4ADB00D1CADB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EEA66205286A4F8300D1CADB /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		EEA66206286A4F8300D1CADB /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		EECCE872286A6270000D2054 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		EECCE873286A6270000D2054 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		F1F53F2000EAE47FD24F74C6 /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +193,8 @@
 				EEA66203286A4ADB00D1CADB /* LoginViewController.m */,
 				EEA66205286A4F8300D1CADB /* FeedViewController.h */,
 				EEA66206286A4F8300D1CADB /* FeedViewController.m */,
+				EECCE872286A6270000D2054 /* ComposeViewController.h */,
+				EECCE873286A6270000D2054 /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				EEA661CD286A420000D1CADB /* AppDelegate.m in Sources */,
 				EEA661DE286A420100D1CADB /* main.m in Sources */,
 				EEA661D0286A420000D1CADB /* SceneDelegate.m in Sources */,
+				EECCE874286A6270000D2054 /* ComposeViewController.m in Sources */,
 				EEA66207286A4F8300D1CADB /* FeedViewController.m in Sources */,
 				EEA66204286A4ADB00D1CADB /* LoginViewController.m in Sources */,
 			);
