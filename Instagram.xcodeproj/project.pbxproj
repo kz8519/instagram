@@ -159,6 +159,7 @@
 		EEA661CA286A420000D1CADB /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				EECCE87D286B908A000D2054 /* Views */,
 				EECCE875286A70CC000D2054 /* Models */,
 				EEA66201286A4ABE00D1CADB /* View Controllers */,
 				EEA661CB286A420000D1CADB /* AppDelegate.h */,
@@ -211,10 +212,17 @@
 			children = (
 				EECCE876286A70F1000D2054 /* Post.h */,
 				EECCE877286A70F1000D2054 /* Post.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EECCE87D286B908A000D2054 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				EECCE879286B6A1B000D2054 /* PostCell.h */,
 				EECCE87A286B6A1B000D2054 /* PostCell.m */,
 			);
-			path = Models;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

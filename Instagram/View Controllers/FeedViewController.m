@@ -16,7 +16,10 @@
 @interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logoutUser:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) NSMutableArray *arrayOfPosts;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 
 @end
@@ -26,6 +29,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self queryPosts];
+    
+    // Implement refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(queryPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (void)queryPosts {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+//    [query whereKey:@"likesCount" greaterThan:@100];
+    query.limit = 20;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.arrayOfPosts = posts;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -36,6 +68,7 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     
     Post *post = self.arrayOfPosts[indexPath.row];
+    cell.post = post;
     
     return cell;
 }

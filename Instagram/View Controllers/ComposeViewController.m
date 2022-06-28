@@ -43,7 +43,7 @@
     
     // Save with parse
 //    [Post postUserImage:self.photoView.image withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
-    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.image.size] withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
+    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.bounds.size] withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
         if(error){
             NSLog(@"Error: %@", error.localizedDescription);
         }
@@ -89,6 +89,7 @@
 
     // TODO: Do something with the images (based on your use case)
     self.photoView.image = originalImage;
+//    self.photoView.image = [self resizeImage:originalImage withSize:self.photoView.image.size];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
