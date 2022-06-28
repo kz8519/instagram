@@ -25,6 +25,7 @@
 		EECCE874286A6270000D2054 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE873286A6270000D2054 /* ComposeViewController.m */; };
 		EECCE878286A70F1000D2054 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE877286A70F1000D2054 /* Post.m */; };
 		EECCE87B286B6A1B000D2054 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE87A286B6A1B000D2054 /* PostCell.m */; };
+		EECCE880286BA086000D2054 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE87F286BA086000D2054 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		EECCE877286A70F1000D2054 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		EECCE879286B6A1B000D2054 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		EECCE87A286B6A1B000D2054 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		EECCE87E286BA086000D2054 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		EECCE87F286BA086000D2054 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		F1F53F2000EAE47FD24F74C6 /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +206,8 @@
 				EEA66206286A4F8300D1CADB /* FeedViewController.m */,
 				EECCE872286A6270000D2054 /* ComposeViewController.h */,
 				EECCE873286A6270000D2054 /* ComposeViewController.m */,
+				EECCE87E286BA086000D2054 /* DetailsViewController.h */,
+				EECCE87F286BA086000D2054 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA661D3286A420000D1CADB /* ViewController.m in Sources */,
+				EECCE880286BA086000D2054 /* DetailsViewController.m in Sources */,
 				EEA661CD286A420000D1CADB /* AppDelegate.m in Sources */,
 				EEA661DE286A420100D1CADB /* main.m in Sources */,
 				EEA661D0286A420000D1CADB /* SceneDelegate.m in Sources */,

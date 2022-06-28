@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DetailsViewController.h"
 #import "PostCell.h"
 #import "Post.h"
 
@@ -73,15 +74,23 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([sender isKindOfClass: [PostCell class]]) {
+        // Segue to DetailsViewController so user can view tweet details
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        Post *dataToPass = self.arrayOfPosts[indexPath.row];
+        DetailsViewController *detailVC = [segue destinationViewController];
+        detailVC.post = dataToPass;
+    }
 }
-*/
+
 
 - (IBAction)logoutUser:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
