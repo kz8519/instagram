@@ -9,10 +9,15 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "PostCell.h"
+#import "Post.h"
 
 
-@interface FeedViewController ()
+@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logoutUser:(id)sender;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *arrayOfPosts;
+
 
 @end
 
@@ -21,6 +26,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfPosts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    
+    Post *post = self.arrayOfPosts[indexPath.row];
+    
+    return cell;
 }
 
 /*

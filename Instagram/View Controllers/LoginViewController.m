@@ -7,6 +7,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "FeedViewController.h"
 
 @interface LoginViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
@@ -66,7 +67,11 @@
                 NSLog(@"User registered successfully");
                 
                 // manually segue to logged in view
-                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+//                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+                // Swap window root view controller
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                FeedViewController *feedNVC = [storyboard instantiateViewControllerWithIdentifier:@"FeedNavigationViewController"];
+                self.view.window.rootViewController = feedNVC;
             }
         }];
     }
@@ -100,7 +105,16 @@
                 NSLog(@"User logged in successfully");
                 
                 // display view controller that needs to shown after successful login
-                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+//                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+                
+                
+                
+                // TODO: sync login with logout (these three lines are what logout uses; either change login to this, or change logout to the one-line dismiss view) (same deal above)
+                // Swap window root view controller
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                FeedViewController *feedNVC = [storyboard instantiateViewControllerWithIdentifier:@"FeedNavigationViewController"];
+                self.view.window.rootViewController = feedNVC;
+                
             }
         }];
     }
