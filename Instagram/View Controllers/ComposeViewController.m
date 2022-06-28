@@ -6,10 +6,16 @@
 //
 
 #import "ComposeViewController.h"
+#import "Post.h"
+#import <Parse/Parse.h>
+
 
 @interface ComposeViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *captionField;
+@property (strong, nonatomic) IBOutlet UIImageView *photoView;
 - (IBAction)useCamera:(id)sender;
 - (IBAction)usePhotos:(id)sender;
+- (IBAction)sharePost:(id)sender;
 
 @end
 
@@ -29,6 +35,25 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)sharePost:(id)sender {
+    
+    // Resize image
+//    [self resizeImage:originalImage withSize:self.photoView.image.size];
+    
+    // Save with parse
+//    [Post postUserImage:self.photoView.image withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
+    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.image.size] withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
+        if(error){
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Success!");
+        }
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)usePhotos:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -62,10 +87,26 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
-    // Do something with the images (based on your use case)
+    // TODO: Do something with the images (based on your use case)
+    self.photoView.image = originalImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 @end
