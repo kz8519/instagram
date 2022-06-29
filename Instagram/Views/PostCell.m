@@ -25,9 +25,9 @@
 - (void)setPost:(Post *)post {
     _post = post;
     
-    PFUser *postAuthor = self.post.author;
-    [postAuthor fetchIfNeeded];
-    self.usernameLabel.text = postAuthor.username;
+//    PFUser *postAuthor = self.post.author;
+//    [postAuthor fetchIfNeeded];
+//    self.usernameLabel.text = postAuthor.username;
 
     self.captionLabel.text = self.post.caption;
 

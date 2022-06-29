@@ -21,11 +21,12 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfPosts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
-
-
 @end
 
 @implementation FeedViewController
+
+NSString *CellIdentifier = @"TableViewCell";
+NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +35,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+
     [self queryPosts];
     
     // Implement refresh
@@ -62,18 +66,38 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayOfPosts.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     
-    Post *post = self.arrayOfPosts[indexPath.row];
+//    Post *post = self.arrayOfPosts[indexPath.row];
+    Post *post = self.arrayOfPosts[indexPath.section];
     cell.post = post;
+    NSLog(@"%@", post.caption);
     
     return cell;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.arrayOfPosts.count;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    
+    Post *post = self.arrayOfPosts[section];
+    PFUser *postAuthor = post.author;
+    [postAuthor fetchIfNeeded];
+    header.textLabel.text = postAuthor.username;
+    
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
 
 #pragma mark - Navigation
 
@@ -85,7 +109,8 @@
     if ([sender isKindOfClass: [PostCell class]]) {
         // Segue to DetailsViewController so user can view tweet details
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        Post *dataToPass = self.arrayOfPosts[indexPath.row];
+//        Post *dataToPass = self.arrayOfPosts[indexPath.row];
+        Post *dataToPass = self.arrayOfPosts[indexPath.section];
         DetailsViewController *detailVC = [segue destinationViewController];
         detailVC.post = dataToPass;
     }

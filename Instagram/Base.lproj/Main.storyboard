@@ -97,19 +97,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHK-Wq-2rC">
-                                                    <rect key="frame" x="27" y="2" width="343" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="zeK-hQ-Ja2" id="4br-bx-PBU"/>
                                             <outlet property="postImageView" destination="Ifa-st-45r" id="TMN-qk-0G2"/>
-                                            <outlet property="usernameLabel" destination="jHK-Wq-2rC" id="6fp-da-LPc"/>
                                             <segue destination="qCd-91-u4J" kind="show" id="UvQ-If-jcr"/>
                                         </connections>
                                     </tableViewCell>
