@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSMutableArray *arrayOfPosts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+//@property (nonatomic, strong) NSInteger *numPostsToLoad;
 
 @end
 
@@ -29,6 +30,7 @@
 NSString *CellIdentifier = @"TableViewCell";
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 NSString *FooterViewIdentifier = @"TableViewFooterView";
+int *numPostsToLoad = 20;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +55,8 @@ NSString *FooterViewIdentifier = @"TableViewFooterView";
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
 //    [query whereKey:@"likesCount" greaterThan:@100];
-    query.limit = 20;
+//    query.limit = 20;
+    query.limit = numPostsToLoad;
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
@@ -66,6 +69,14 @@ NSString *FooterViewIdentifier = @"TableViewFooterView";
         }
         [self.refreshControl endRefreshing];
     }];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%ld", indexPath.section);
+    if(indexPath.section + 1 == [self.arrayOfPosts count]){
+        numPostsToLoad += 20;
+        [self queryPosts];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
