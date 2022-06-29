@@ -5,6 +5,7 @@
 //  Created by Kathy Zhong on 6/27/22.
 //
 
+#import "DateTools.h"
 #import "FeedViewController.h"
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
@@ -27,6 +28,7 @@
 
 NSString *CellIdentifier = @"TableViewCell";
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
+NSString *FooterViewIdentifier = @"TableViewFooterView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +39,7 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:FooterViewIdentifier];
 
     [self queryPosts];
     
@@ -96,6 +99,20 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FooterViewIdentifier];
+    
+    Post *post = self.arrayOfPosts[section];
+//    NSLog(@"%@", post.createdAt.shortTimeAgoSinceNow);
+    footer.textLabel.text = post.createdAt.shortTimeAgoSinceNow;
+    
+    return footer;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 30;
 }
 
