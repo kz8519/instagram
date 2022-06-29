@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *captionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *postImageView;
+@property (strong, nonatomic) IBOutlet PFImageView *profileImageView;
 
 @end
 
@@ -35,6 +36,12 @@
     if (self.post.image != nil) {
         self.postImageView.file = self.post.image;
         [self.postImageView loadInBackground];
+    }
+    
+    self.profileImageView.image = nil;
+    if (postAuthor[@"profilePicture"] != nil) {
+        self.profileImageView.file = postAuthor[@"profilePicture"];
+        [self.profileImageView loadInBackground];
     }
 }
 
