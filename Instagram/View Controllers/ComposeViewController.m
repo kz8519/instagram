@@ -43,8 +43,7 @@
 //    [self resizeImage:originalImage withSize:self.photoView.image.size];
     
     // Save with parse
-//    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.bounds.size] withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
-    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.bounds.size] withCaption:self.captionView.text withCompletion:^(BOOL success, NSError *error) {
+    [Post postUserImage:[self resizeImage:self.photoView.image withSize:CGSizeMake(self.photoView.bounds.size.width * 5, self.photoView.bounds.size.height * 5)] withCaption:self.captionView.text withCompletion:^(BOOL success, NSError *error) {
         if(error){
             NSLog(@"Error: %@", error.localizedDescription);
         }
