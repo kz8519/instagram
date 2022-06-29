@@ -26,6 +26,7 @@
 		EECCE878286A70F1000D2054 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE877286A70F1000D2054 /* Post.m */; };
 		EECCE87B286B6A1B000D2054 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE87A286B6A1B000D2054 /* PostCell.m */; };
 		EECCE880286BA086000D2054 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE87F286BA086000D2054 /* DetailsViewController.m */; };
+		EECCE883286BB89E000D2054 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCE882286BB89E000D2054 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		EECCE87A286B6A1B000D2054 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		EECCE87E286BA086000D2054 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		EECCE87F286BA086000D2054 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		EECCE881286BB89E000D2054 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		EECCE882286BB89E000D2054 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F1F53F2000EAE47FD24F74C6 /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +211,8 @@
 				EECCE873286A6270000D2054 /* ComposeViewController.m */,
 				EECCE87E286BA086000D2054 /* DetailsViewController.h */,
 				EECCE87F286BA086000D2054 /* DetailsViewController.m */,
+				EECCE881286BB89E000D2054 /* ProfileViewController.h */,
+				EECCE882286BB89E000D2054 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				EECCE874286A6270000D2054 /* ComposeViewController.m in Sources */,
 				EECCE87B286B6A1B000D2054 /* PostCell.m in Sources */,
 				EEA66207286A4F8300D1CADB /* FeedViewController.m in Sources */,
+				EECCE883286BB89E000D2054 /* ProfileViewController.m in Sources */,
 				EEA66204286A4ADB00D1CADB /* LoginViewController.m in Sources */,
 				EECCE878286A70F1000D2054 /* Post.m in Sources */,
 			);

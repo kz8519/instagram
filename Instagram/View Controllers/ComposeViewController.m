@@ -11,11 +11,12 @@
 
 
 @interface ComposeViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *captionField;
+//@property (strong, nonatomic) IBOutlet UITextField *captionField;
 @property (strong, nonatomic) IBOutlet UIImageView *photoView;
 - (IBAction)useCamera:(id)sender;
 - (IBAction)usePhotos:(id)sender;
 - (IBAction)sharePost:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextView *captionView;
 
 @end
 
@@ -42,8 +43,8 @@
 //    [self resizeImage:originalImage withSize:self.photoView.image.size];
     
     // Save with parse
-//    [Post postUserImage:self.photoView.image withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
-    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.bounds.size] withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
+//    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.bounds.size] withCaption:self.captionField.text withCompletion:^(BOOL success, NSError *error) {
+    [Post postUserImage:[self resizeImage:self.photoView.image withSize:self.photoView.bounds.size] withCaption:self.captionView.text withCompletion:^(BOOL success, NSError *error) {
         if(error){
             NSLog(@"Error: %@", error.localizedDescription);
         }
