@@ -25,8 +25,16 @@
 - (void)setPost:(Post *)post {
     _post = post;
     
-    self.captionLabel.text = self.post.caption;
+    [self setCaptionLabel];
 
+    [self setPostImage];
+}
+
+- (void) setCaptionLabel {
+    self.captionLabel.text = self.post.caption;
+}
+
+- (void) setPostImage {
     self.postImageView.image = nil;
     if (self.post.image != nil) {
         self.postImageView.file = self.post.image;
