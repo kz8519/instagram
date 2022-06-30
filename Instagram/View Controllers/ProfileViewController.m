@@ -7,6 +7,7 @@
 
 #import "ProfileViewController.h"
 #import "CollectionViewCell.h"
+#import "DetailsViewController.h"
 #import "Post.h"
 @import Parse;
 
@@ -72,15 +73,23 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([sender isKindOfClass: [CollectionViewCell class]]) {
+        // Segue to DetailsViewController so user can view tweet details
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        Post *dataToPass = self.arrayOfPosts[indexPath.row];
+        DetailsViewController *detailVC = [segue destinationViewController];
+        detailVC.post = dataToPass;
+    }
 }
-*/
+
 
 - (IBAction)changeProfilePhoto:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];

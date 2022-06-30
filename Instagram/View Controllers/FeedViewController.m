@@ -71,7 +71,7 @@ int *numPostsToLoad = 20;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", indexPath.section);
+//    NSLog(@"%ld", indexPath.section);
     if(indexPath.section + 1 == [self.arrayOfPosts count]){
         numPostsToLoad += 20;
         [self queryPosts];
@@ -88,7 +88,7 @@ int *numPostsToLoad = 20;
 //    Post *post = self.arrayOfPosts[indexPath.row];
     Post *post = self.arrayOfPosts[indexPath.section];
     cell.post = post;
-    NSLog(@"%@", post.caption);
+//    NSLog(@"%@", post.caption);
     
     return cell;
 }
@@ -116,8 +116,7 @@ int *numPostsToLoad = 20;
     UITableViewHeaderFooterView *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FooterViewIdentifier];
     
     Post *post = self.arrayOfPosts[section];
-//    NSLog(@"%@", post.createdAt.shortTimeAgoSinceNow);
-    footer.textLabel.text = post.createdAt.shortTimeAgoSinceNow;
+    footer.textLabel.text = [post.createdAt.shortTimeAgoSinceNow stringByAppendingString:@" ago"];
     
     return footer;
 }

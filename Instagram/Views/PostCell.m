@@ -27,8 +27,9 @@
     
 //    PFUser *postAuthor = self.post.author;
 //    [postAuthor fetchIfNeeded];
-//    self.usernameLabel.text = postAuthor.username;
+//    NSString* username = [postAuthor.username stringByAppendingString:@" "];
 
+//    self.captionLabel.text = [username stringByAppendingString:self.post.caption];
     self.captionLabel.text = self.post.caption;
 
     self.postImageView.image = nil;

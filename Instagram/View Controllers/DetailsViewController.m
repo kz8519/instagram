@@ -30,7 +30,7 @@
 
     self.captionLabel.text = self.post.caption;
 
-    self.timestampLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
+    self.timestampLabel.text = [self.post.createdAt.shortTimeAgoSinceNow stringByAppendingString:@" ago"];
 
     self.postImageView.image = nil;
     if (self.post.image != nil) {

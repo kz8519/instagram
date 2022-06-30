@@ -191,7 +191,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mG3-X0-64l">
-                                <rect key="frame" x="0.0" y="303" width="414" height="539"/>
+                                <rect key="frame" x="0.0" y="303" width="414" height="510"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Flc-iB-eUo">
@@ -217,6 +217,7 @@
                                         <size key="customSize" width="128" height="128"/>
                                         <connections>
                                             <outlet property="pictureView" destination="pta-V2-eZQ" id="KFv-3l-xOE"/>
+                                            <segue destination="qCd-91-u4J" kind="show" id="KTF-pg-LSi"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -433,6 +434,9 @@
             <point key="canvasLocation" x="3167" y="94"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KTF-pg-LSi"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
