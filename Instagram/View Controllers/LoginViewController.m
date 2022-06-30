@@ -34,7 +34,7 @@
 }
 */
 
-- (BOOL)fieldIsEmpty {
+- (BOOL)areFieldsEmpty {
     return ([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]);
 }
 
@@ -50,6 +50,12 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)swapRootVC {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FeedViewController *feedNVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    self.view.window.rootViewController = feedNVC;
+}
+
 - (void)parseSignup: (PFUser *)user {
     // call sign up function on the object
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -59,10 +65,7 @@
         else {
             NSLog(@"User registered successfully");
             
-            // Swap window root view controller
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            FeedViewController *feedNVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-            self.view.window.rootViewController = feedNVC;
+            [self swapRootVC];
         }
     }];
 }
@@ -74,10 +77,7 @@
         } else {
             NSLog(@"User logged in successfully");
             
-            // Swap window root view controller
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            FeedViewController *feedNVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-            self.view.window.rootViewController = feedNVC;
+            [self swapRootVC];
         }
     }];
 }
@@ -90,12 +90,10 @@
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     
-    [self fieldIsEmpty] ? [self emptyFieldAlert] : [self parseSignup:newUser];
+    [self areFieldsEmpty] ? [self emptyFieldAlert] : [self parseSignup:newUser];
 }
 
 - (IBAction)loginUser:(id)sender {
-    
-    [self fieldIsEmpty] ? [self emptyFieldAlert] : [self parseLogin: self.usernameField.text :self.passwordField.text];
-    
+    [self areFieldsEmpty] ? [self emptyFieldAlert] : [self parseLogin: self.usernameField.text :self.passwordField.text];
 }
 @end
