@@ -5,9 +5,9 @@
 //  Created by Kathy Zhong on 6/28/22.
 //
 
+@import Parse;
 #import "DetailsViewController.h"
 #import "DateTools.h"
-@import Parse;
 
 @interface DetailsViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -23,24 +23,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+        
+    [self setUsernameText:self.post.author];
     
-    PFUser *postAuthor = self.post.author;
-    [postAuthor fetchIfNeeded];
-    self.usernameLabel.text = postAuthor.username;
+    [self setCaptionText];
 
+    [self setTimestampText];
+    
+    [self setPostImage];
+    
+    [self setProfileImage:self.post.author];
+}
+
+- (void) setUsernameText: (PFUser *)user {
+    [user fetchIfNeeded];
+    self.usernameLabel.text = user.username;
+}
+
+- (void) setCaptionText {
     self.captionLabel.text = self.post.caption;
+}
 
+- (void) setTimestampText {
     self.timestampLabel.text = [self.post.createdAt.shortTimeAgoSinceNow stringByAppendingString:@" ago"];
+}
 
+- (void) setPostImage {
     self.postImageView.image = nil;
     if (self.post.image != nil) {
         self.postImageView.file = self.post.image;
         [self.postImageView loadInBackground];
     }
-    
+}
+
+- (void) setProfileImage: (PFUser *)user {
     self.profileImageView.image = nil;
-    if (postAuthor[@"profilePicture"] != nil) {
-        self.profileImageView.file = postAuthor[@"profilePicture"];
+    if (user[@"profilePicture"] != nil) {
+        self.profileImageView.file = user[@"profilePicture"];
         [self.profileImageView loadInBackground];
     }
 }

@@ -25,12 +25,12 @@
 - (void)setPost:(Post *)post {
     _post = post;
     
-    [self setCaptionLabel];
+    [self setCaptionText];
 
     [self setPostImage];
 }
 
-- (void) setCaptionLabel {
+- (void) setCaptionText {
     self.captionLabel.text = self.post.caption;
 }
 
