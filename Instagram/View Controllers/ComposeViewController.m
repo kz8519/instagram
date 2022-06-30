@@ -5,15 +5,13 @@
 //  Created by Kathy Zhong on 6/27/22.
 //
 
+@import UITextView_Placeholder;
 #import "ComposeViewController.h"
 #import "Post.h"
-//#import <UITextView+Placeholder/UITextView+Placeholder.h>
-@import UITextView_Placeholder;
 #import <Parse/Parse.h>
 
 
-@interface ComposeViewController ()
-//@property (strong, nonatomic) IBOutlet UITextField *captionField;
+@interface ComposeViewController ()<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *photoView;
 - (IBAction)useCamera:(id)sender;
 - (IBAction)usePhotos:(id)sender;
@@ -84,14 +82,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
-    // TODO: Do something with the images (based on your use case)
-    self.photoView.image = originalImage;
-//    self.photoView.image = [self resizeImage:originalImage withSize:self.photoView.image.size];
+    self.photoView.image = info[UIImagePickerControllerOriginalImage];
     
-    // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
