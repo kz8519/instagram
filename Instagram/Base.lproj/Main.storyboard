@@ -347,7 +347,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-JH-lNg" customClass="PFImageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-JH-lNg" customClass="PFImageView">
                                 <rect key="frame" x="10" y="106" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="nNg-zd-EZu"/>
@@ -577,7 +577,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UvQ-If-jcr"/>
+        <segue reference="KTF-pg-LSi"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>

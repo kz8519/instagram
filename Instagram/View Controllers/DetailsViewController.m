@@ -57,7 +57,6 @@
 }
 
 - (void) setProfileImage: (PFUser *)user {
-    self.profileImageView.image = nil;
     if (user[@"profilePicture"] != nil) {
         self.profileImageView.file = user[@"profilePicture"];
         [self.profileImageView loadInBackground];
