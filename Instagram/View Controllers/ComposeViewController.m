@@ -7,6 +7,8 @@
 
 #import "ComposeViewController.h"
 #import "Post.h"
+//#import <UITextView+Placeholder/UITextView+Placeholder.h>
+@import UITextView_Placeholder;
 #import <Parse/Parse.h>
 
 
@@ -25,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.captionView.placeholder = @"Write a caption...";
 }
 
 /*
