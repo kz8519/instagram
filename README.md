@@ -36,7 +36,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [X] User can add and edit a biography from their profile
-- [X] User can tap on a picture from their profile view to view the corresponding post's details
+- [X] User can tap on a picture from their profile to view the corresponding post's details
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -47,7 +47,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://submissions.us-east-1.linodeobjects.com/metau_ios/MzPueCW-.gif' title='Video Walkthrough 1' width='' alt='Video Walkthrough' />
+<img src='https://submissions.us-east-1.linodeobjects.com/metau_ios/QGdpvPeJ.gif' title='Video Walkthrough 2' width='' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
