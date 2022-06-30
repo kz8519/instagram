@@ -25,11 +25,6 @@
 - (void)setPost:(Post *)post {
     _post = post;
     
-//    PFUser *postAuthor = self.post.author;
-//    [postAuthor fetchIfNeeded];
-//    NSString* username = [postAuthor.username stringByAppendingString:@" "];
-
-//    self.captionLabel.text = [username stringByAppendingString:self.post.caption];
     self.captionLabel.text = self.post.caption;
 
     self.postImageView.image = nil;

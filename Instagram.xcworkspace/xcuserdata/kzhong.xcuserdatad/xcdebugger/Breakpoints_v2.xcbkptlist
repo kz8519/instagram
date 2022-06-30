@@ -78,8 +78,8 @@
             filePath = "Instagram/Views/PostCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-setPost:"
             landmarkType = "7">
          </BreakpointContent>
