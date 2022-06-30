@@ -13,14 +13,12 @@
 @import UITextView_Placeholder;
 
 
-@interface ProfileViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ProfileViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet PFImageView *profileImageView;
-//@property (strong, nonatomic) IBOutlet UITextView *bioView;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *bioLabel;
 - (IBAction)changeProfilePhoto:(id)sender;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
-//@property (strong, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) NSMutableArray *arrayOfPosts;
 - (IBAction)didTapEdit:(id)sender;
 
@@ -34,22 +32,28 @@
     // Do any additional setup after loading the view.
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    
-//    self.bioView.placeholder = @"Add bio here";
-    
+        
     PFUser *user = [PFUser currentUser];
+    
+    [self setProfileImage:user];
+    [self setBioText:user];
+    [self setUsernameText:user];
+    [self queryPosts:user];
+}
+
+- (void) setProfileImage:(PFUser *)user {
     if (user[@"profilePicture"] != nil) {
         self.profileImageView.file = user[@"profilePicture"];
         [self.profileImageView loadInBackground];
     }
-    
-    if (user[@"bio"] != nil) {
-        self.bioLabel.text = user[@"bio"];
-    }
-    
+}
+
+- (void) setBioText:(PFUser *)user {
+    self.bioLabel.text = user[@"bio"];
+}
+
+- (void) setUsernameText:(PFUser *)user {
     self.usernameLabel.text = user.username;
-    
-    [self queryPosts:user];
 }
 
 - (void)queryPosts:(PFUser *)user {
@@ -57,12 +61,10 @@
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"author" equalTo:user];
     query.limit = 20;
-//    query.limit = numPostsToLoad;
 
-    // fetch data asynchronously
+    // Fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            // do something with the array of object returned by the call
             self.arrayOfPosts = posts;
             [self.collectionView reloadData];
         } else {
@@ -72,17 +74,14 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return self.arrayOfPosts.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
     
     Post *post = self.arrayOfPosts[indexPath.row];
     cell.post = post;
-    NSLog(@"%@", cell.post);
 
     return cell;
 }
@@ -96,7 +95,6 @@
     // Pass the selected object to the new view controller.
     
     if ([sender isKindOfClass: [CollectionViewCell class]]) {
-        // Segue to DetailsViewController so user can view tweet details
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         Post *dataToPass = self.arrayOfPosts[indexPath.row];
         DetailsViewController *detailVC = [segue destinationViewController];
@@ -104,8 +102,8 @@
     }
 }
 
-
 - (IBAction)changeProfilePhoto:(id)sender {
+    
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -116,16 +114,11 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-//    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
     UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImageView.bounds.size];
 
-    // Do something with the images (based on your use case)
     [self.profileImageView setImage:resizedImage];
     
-    // https://stackoverflow.com/questions/4623931/get-underlying-nsdata-from-uiimage
     NSData *profileImageData = UIImagePNGRepresentation(resizedImage);
     PFFileObject *file = [PFFileObject fileObjectWithData:profileImageData];
     [self.profileImageView setFile:file];
@@ -140,7 +133,6 @@
         }
     }];
     
-    // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -165,9 +157,9 @@
         textField.placeholder = @"Enter new biography";
     }];
     
-    // create an Save action
+    // Create an Save action
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
+        // Handle response
         PFUser *currentUser = [PFUser currentUser];
         currentUser[@"bio"] = [[alert textFields][0] text];
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -180,7 +172,6 @@
         }];
     }];
     
-    // add the Save action to the alert controller
     [alert addAction:saveAction];
     
     [self presentViewController:alert animated:YES completion:nil];
