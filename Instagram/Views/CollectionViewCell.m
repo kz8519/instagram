@@ -12,6 +12,10 @@
 - (void)setPost:(Post *)post {
     _post = post;
 
+    [self setPostImage];
+}
+
+- (void) setPostImage {
     self.pictureView.image = nil;
     if (self.post.image != nil) {
         self.pictureView.file = self.post.image;
