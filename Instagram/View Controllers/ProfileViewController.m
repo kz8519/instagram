@@ -6,11 +6,17 @@
 //
 
 #import "ProfileViewController.h"
+#import "CollectionViewCell.h"
+#import "Post.h"
 @import Parse;
 
-@interface ProfileViewController ()
+@interface ProfileViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet PFImageView *profileImageView;
 - (IBAction)changeProfilePhoto:(id)sender;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+//@property (strong, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) NSMutableArray *arrayOfPosts;
+
 
 @end
 
@@ -19,12 +25,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     
     PFUser *user = [PFUser currentUser];
     if (user[@"profilePicture"] != nil) {
         self.profileImageView.file = user[@"profilePicture"];
         [self.profileImageView loadInBackground];
     }
+    
+    [self queryPosts:user];
+}
+
+- (void)queryPosts:(PFUser *)user {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"author" equalTo:user];
+    query.limit = 20;
+//    query.limit = numPostsToLoad;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.arrayOfPosts = posts;
+            [self.collectionView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.arrayOfPosts.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
+    
+    Post *post = self.arrayOfPosts[indexPath.row];
+    cell.post = post;
+    NSLog(@"%@", cell.post);
+
+    return cell;
 }
 
 /*

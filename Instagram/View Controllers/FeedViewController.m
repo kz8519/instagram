@@ -21,7 +21,6 @@
 
 @property (nonatomic, strong) NSMutableArray *arrayOfPosts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-//@property (nonatomic, strong) NSInteger *numPostsToLoad;
 
 @end
 
