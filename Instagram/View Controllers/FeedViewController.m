@@ -5,9 +5,9 @@
 //  Created by Kathy Zhong on 6/27/22.
 //
 
+#import <Parse/Parse.h>
 #import "DateTools.h"
 #import "FeedViewController.h"
-#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
@@ -38,13 +38,20 @@ int *numPostsToLoad = 20;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:FooterViewIdentifier];
+    [self setUpHeaderFooter];
 
     [self queryPosts];
     
-    // Implement refresh
+    [self implementRefresh];
+}
+
+- (void)setUpHeaderFooter {
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:FooterViewIdentifier];
+}
+
+- (void) implementRefresh {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(queryPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -53,14 +60,11 @@ int *numPostsToLoad = 20;
 - (void)queryPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
-//    [query whereKey:@"likesCount" greaterThan:@100];
-//    query.limit = 20;
     query.limit = numPostsToLoad;
 
-    // fetch data asynchronously
+    // Fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            // do something with the array of object returned by the call
             self.arrayOfPosts = posts;
             [self.tableView reloadData];
         } else {
@@ -71,7 +75,6 @@ int *numPostsToLoad = 20;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"%ld", indexPath.section);
     if(indexPath.section + 1 == [self.arrayOfPosts count]){
         numPostsToLoad += 20;
         [self queryPosts];
@@ -85,10 +88,8 @@ int *numPostsToLoad = 20;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     
-//    Post *post = self.arrayOfPosts[indexPath.row];
     Post *post = self.arrayOfPosts[indexPath.section];
     cell.post = post;
-//    NSLog(@"%@", post.caption);
     
     return cell;
 }
@@ -133,9 +134,7 @@ int *numPostsToLoad = 20;
     // Pass the selected object to the new view controller.
     
     if ([sender isKindOfClass: [PostCell class]]) {
-        // Segue to DetailsViewController so user can view tweet details
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//        Post *dataToPass = self.arrayOfPosts[indexPath.row];
         Post *dataToPass = self.arrayOfPosts[indexPath.section];
         DetailsViewController *detailVC = [segue destinationViewController];
         detailVC.post = dataToPass;
@@ -156,7 +155,6 @@ int *numPostsToLoad = 20;
             LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             self.view.window.rootViewController = loginViewController;
         }
-        
     }];
 }
 @end
